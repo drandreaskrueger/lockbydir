@@ -35,7 +35,7 @@ TIMEOUT:  Seconds after which a lock opens automatically.
 PATIENCE: Seconds after which no more hope to acquire the lock. 
 
 Shortest possible usage is in howToUse().
-The inner workings are well explained in testFLocks().
+The inner workings are well explained in testDLocks().
 Parallel processes are shown in 2 examples in 'lockbydir_concurrent.py'. 
 
 
@@ -300,7 +300,7 @@ def getInfoLogger(ID = ""):
     
 
 
-def testFLock():
+def testDLock():
     "Present the inner workings, and all relevant functions."
 
     Log = getInfoLogger()
@@ -388,7 +388,7 @@ def testFLock():
 
 
 def howToUse(secs = 9):
-    """short version how to use FLocks: A, B, C (, D)."""
+    """short version how to use DLocks: A, B, C (, D)."""
      
     L = DLock( "LOCKNAME" ) # step A: instantiate, with name
     acquired = L.LoopWhileLocked_ThenLocking() # step B: waitThenTryLocking
@@ -398,6 +398,6 @@ def howToUse(secs = 9):
     return acquired         # Optional: Tell the caller.
 
 if __name__ == '__main__':
-    testFLock()
+    testDLock()
     howToUse(1)
 

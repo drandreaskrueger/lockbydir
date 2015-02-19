@@ -75,7 +75,7 @@ def createStress(L):
     
 
 def howToUse(secs = 9):
-    """short version how to use FLocks: A, B, C (, D). Just a reminder."""
+    """short version how to use DLocks: A, B, C (, D). Just a reminder."""
      
     L = DLock( "LOCKNAME" ) # step A: instantiate, with name
     acquired = L.LoopWhileLocked_ThenLocking() # step B: waitThenTryLocking
@@ -87,7 +87,7 @@ def howToUse(secs = 9):
 
 def compete( arg ):
     """Creates DLock instance, acquires lock, sleeps, (then unlocks).
-       Verbose explanation how to use the FLocks: A, B, C (, D). 
+       Verbose explanation how to use the DLocks: A, B, C (, D). 
        
        See comments:
     """
