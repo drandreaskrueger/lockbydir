@@ -48,14 +48,15 @@ You can see the examples running live(!) in a GITplayer, thanks to PythonAnywher
 * [lockbydir_concurrent.py example 1 (several processes use same lock)](https://www.pythonanywhere.com/gists/6133112519b52eb435c2/gistfile1.txt/python2)
 * [lockbydir_concurrent.py example 2 (massive hammering)](https://www.pythonanywhere.com/gists/d0209dd72d66efdb2c8f/gistfile1.txt/python2)
 
-Or you download and run it like this:  
+Or you download it, and start all 3 examples like this:  
 
     git clone https://github.com/drandreaskrueger/lockbydir.git
     cd lockbydir
-    python lockbydir.py
+    python lockbydir.py 
     python lockbydir_concurrent.py 
-
-@note:     tested on Python 2.7.5  
+    python -c "import lockbydir_concurrent; lockbydir_concurrent.startMassive()"
+    
+@note:     Tested on Python 2.7.5. Works on Windows and Linux.
 @requires: lockbydir.py, lockbydir_OS.py, lockbydir_concurrent.py
     
 - - -
