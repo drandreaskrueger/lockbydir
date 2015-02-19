@@ -47,21 +47,21 @@ Default TIMEOUT, and PATIENCE can be changed in each DLock instance.
 
 * Shortest possible usage is in howToUse().
 * The inner workings are well explained in testDLocks().
-* Parallel processes are demonstrated in example 'lockbyfile_concurrent.py'. 
+* Parallel processes are demonstrated in example 'lockbydir_concurrent.py'. 
 
 ### @liveplayer
 You can see the examples running live(!) in a GITplayer, thanks to PythonAnywhere!
 
 * [testDLock() (inner workings)](https://www.pythonanywhere.com/gists/4b0b06bf9c13d8e5ea76/gistfile1.txt/python2/)
-* [lockbyfile_concurrent.py example 1 (several processes use same lock)](https://www.pythonanywhere.com/gists/6133112519b52eb435c2/gistfile1.txt/python2)
-* [lockbyfile_concurrent.py example 2 (massive hammering)](https://www.pythonanywhere.com/gists/d0209dd72d66efdb2c8f/gistfile1.txt/python2)
+* [lockbydir_concurrent.py example 1 (several processes use same lock)](https://www.pythonanywhere.com/gists/6133112519b52eb435c2/gistfile1.txt/python2)
+* [lockbydir_concurrent.py example 2 (massive hammering)](https://www.pythonanywhere.com/gists/d0209dd72d66efdb2c8f/gistfile1.txt/python2)
 
 Or you download and run it like this:  
 
-    git clone https://github.com/drandreaskrueger/lockbyfile.git
-    cd lockbyfile
-    python lockbyfile.py
-    python lockbyfile_concurrent.py 
+    git clone https://github.com/drandreaskrueger/lockbydir.git
+    cd lockbydir
+    python lockbydir.py
+    python lockbydir_concurrent.py 
 
 
 @note:     tested on Python 2.7.5  
@@ -75,5 +75,6 @@ Or you download and run it like this:
 @since:    23 Jan 2015
 
 @license:  Never remove my name, nor the examples - and send me job offers.
+
 @todo:     I am poor, send bitcoins: 1MT9gazTyodKVU3XFEUgR5aCwG7rXXiuWC Thx! 
 
