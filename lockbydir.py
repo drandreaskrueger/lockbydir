@@ -31,9 +31,12 @@ Users need not care about the lockdir, but access the DLock class
 by two functions: .LoopWhileLocked_ThenLocking() and .unlocking()
 
 
-Default TIMEOUT, and PATIENCE can be changed in your DLock instance:
+Parameters:
 TIMEOUT:  Seconds after which a lock opens automatically.
 PATIENCE: Seconds after which no more hope to acquire the lock. 
+
+Default TIMEOUT, and PATIENCE can be changed in each DLock instance, 
+or (better) by subclassing DLock. 
 
 Shortest possible usage is in howToUse().
 The inner workings are well explained in testDLocks().
@@ -393,11 +396,19 @@ def testDLock():
     Log("L.isLocked = %s" % L.isLocked())
     time.sleep(6)
     Log("L.isLocked = %s" % L.isLocked())
-
+    Log("End. More examples in the other files.")
 
 def print_Ramdisk_Manual():
+    """Measured:
+    500 threads waiting for 1 DLock - overhead by threading, print, and locking:
+    Windows with HD: min=0.0063 max=0.0704 median=0.0279 mean=0.0274 stdv=0.0131
+    Linux with SSD:  
+    DLock in RAM:    
+    So: When time critical, put DLock in RAM!
+    """
+
     print "\nN.B.:"
-    print"""On Linux a (tiny!) ramdisk for the DLocks will reduce the overhead.
+    print"""On Linux a (tiny!) ramdisk can reduce the overhead a little bit.
     modprobe rd
     mkfs -q /dev/ram1 100
     mkdir -p /ramcache
@@ -405,7 +416,7 @@ def print_Ramdisk_Manual():
     df -H | grep ramcache"""
     print "Then you simple use lockname = '/ramcache/lockname'"
     print
-    
+
 
 def howToUse(secs = 9):
     """short version how to use DLocks: A, B, C (, D)."""

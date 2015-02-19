@@ -52,7 +52,7 @@ My github For feature requests, ideas, suggestions, appraisal, criticism:
 RUN_EXAMPLE = 2  # 1 or 2
 
 RAMDISK = "/ramcache/"   # see lockbydir.print_Ramdisk_Manual  
-RAMDISK = ""             # if you have such a ramdisk, uncomment this
+RAMDISK = ""             # if you have such a ramdisk, uncomment this line
 
 from lockbydir import DLock, getInfoLogger, TIMEOUT, print_Ramdisk_Manual
 
@@ -240,7 +240,7 @@ def massiveNumberOfUsers(n, secs):
     print "If all of these are > %f then the DLock has worked fine." % secs
     print diffs
     
-    print "overhead by threading, and locking:", 
+    print "overhead by threading, print, and locking:", 
     diffs = [d - secs for d in diffs] 
     theMin, theMax = min(diffs), max(diffs)
     print "min=%.4f max=%.4f" % (theMin, theMax),
@@ -249,14 +249,13 @@ def massiveNumberOfUsers(n, secs):
     else:
         mean = statistics.mean(diffs)
         median = statistics.median(diffs)
-        stdev = statistics.mean(diffs)
+        stdev = statistics.stdev(diffs)
         print "median=%.4f mean=%.4f stdv=%.4f" % (median, mean, stdev),
     print
         
     
 def startMassive():
-    massiveNumberOfUsers(300, 0.05)
-    
+    massiveNumberOfUsers(500, 0.05)
     print_Ramdisk_Manual()
     
 def startMassive_ForGitPlayer():
@@ -264,7 +263,6 @@ def startMassive_ForGitPlayer():
     print "Clone the Git to your own computer to see this work with 300 threads:"
     print "https://github.com/drandreaskrueger/lockbydir\n\n"
     massiveNumberOfUsers(18, 0.25)
-    
     print_Ramdisk_Manual()
 
 if __name__ == '__main__':

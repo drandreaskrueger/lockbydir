@@ -1,12 +1,4 @@
----------------------
-
-N.B.: This README is not ready yet.
-
----------------------
-
-
-
-# lockbydir.py = Locking across processes. Using lockdir existence and age. 
+# lockbydir.py = Locking across processes. Using lockdir existence & age.
 
 ### @summary 
 
@@ -27,19 +19,18 @@ I want locking of the django DB, across concurrent uwsgi processes, for any unde
 
 ### @mechanism:
 
-A lock is represented by a lockdir, in the current directory.
+A lock is represented by a lockdir, in the current directory (or a RAMDISK).
 
 * While it exists, and its filedate is recent, the lock is 'locked'.
 * If the file does not exist, or is timed out, the lock is 'unlocked'.
 
-
-Users need not care about the lockdir, but access the lock class simply by two functions: 
+Users need not care about the lockdir, but access the lock by two simple functions: 
 * **.LoopWhileLocked_ThenLocking()** and 
 * **.unlocking()**
 
 ### @parameters
 
-Default TIMEOUT, and PATIENCE can be changed in each DLock instance, or by subclassing DLock.
+TIMEOUT, and PATIENCE can be changed in each DLock instance, or by subclassing DLock.
 
 * TIMEOUT: Seconds after which the lock opens automatically.
 * PATIENCE: Seconds after which no more hope to acquire the lock. 
@@ -48,7 +39,7 @@ Default TIMEOUT, and PATIENCE can be changed in each DLock instance, or by subcl
 
 * Shortest possible usage is in howToUse().
 * The inner workings are well explained in testDLocks().
-* Parallel processes are demonstrated in example 'lockbydir_concurrent.py'. 
+* Parallel processes are demonstrated in 2 examples in 'lockbydir_concurrent.py'. 
 
 ### @liveplayer
 You can see the examples running live(!) in a GITplayer, thanks to PythonAnywhere!
@@ -63,7 +54,6 @@ Or you download and run it like this:
     cd lockbydir
     python lockbydir.py
     python lockbydir_concurrent.py 
-
 
 @note:     tested on Python 2.7.5  
 @requires: lockbydir.py, lockbydir_OS.py, lockbydir_concurrent.py
