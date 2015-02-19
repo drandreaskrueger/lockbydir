@@ -52,7 +52,7 @@ My github For feature requests, ideas, suggestions, appraisal, criticism:
 RUN_EXAMPLE = 2  # 1 or 2
 
 RAMDISK = "/ramcache/"   # see lockbydir.print_Ramdisk_Manual  
-RAMDISK = ""            # if you have such a ramdisk, uncomment this
+RAMDISK = ""             # if you have such a ramdisk, uncomment this
 
 from lockbydir import DLock, getInfoLogger, TIMEOUT, print_Ramdisk_Manual
 
