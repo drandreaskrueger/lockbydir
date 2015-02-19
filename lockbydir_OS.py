@@ -31,9 +31,6 @@ See my github For feature requests, ideas, suggestions, appraisal, criticism:
 @wiki https://github.com/drandreaskrueger/lockbydir/wiki 
 '''
 
-RAMDISK = "/ramcache/"   # see lockbydir.print_Ramdisk_Manual  
-RAMDISK = ""             # if you have such a ramdisk, uncomment this
-
 # dir extension:
 LOCKDIREXTENSION = ".lockdir"
 
@@ -144,8 +141,8 @@ def mkdir_ReturnWhetherSuccessful(pathname):
         ##   or when concurrent:                 13 WindowsError(5, 'Access is denied')
         ## Linux:    <type 'exceptions.OSError'> 17 [Errno 17] File exists: 'testing' 
         ##   or when concurrent & virtualbox     71, OSError(71, 'Protocol error')
-        ##   or when full:                           OSError: [Errno 28] No space left on device: '/ramcache/oneNarrowBedForManySleepers.lockdir'
-        if e.errno in (17,13,71): 
+        ##   or when full:                       28, OSError(28, 'No space left on device')
+        if e.errno in (17,13,71,28): 
             return False
         else: 
             raise e
