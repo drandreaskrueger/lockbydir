@@ -22,7 +22,8 @@ underlying DB. See posting: http://stackoverflow.com/q/28030536/3693375
 When no one could really help me to the end, I created this class 'DLock'.
 
 Inner workings:
-A lock is represented by a lockdir, in the current directory.
+A lock is represented by a lockdir, in the current directory (or a RAMDISK).
+
 While it exists, and its filedate is recent, the lock is 'locked'.
 If the dir does not exist, or is timed out, the lock is 'unlocked'.
 

@@ -51,6 +51,9 @@ My github For feature requests, ideas, suggestions, appraisal, criticism:
 
 RUN_EXAMPLE = 2  # 1 or 2
 
+RAMDISK = "/ramcache/"   # see lockbydir.print_Ramdisk_Manual  
+RAMDISK = ""            # if you have such a ramdisk, uncomment this
+
 from lockbydir import DLock, getInfoLogger, TIMEOUT, print_Ramdisk_Manual
 
 ######################################################################
@@ -207,7 +210,7 @@ def massiveNumberOfUsers(n, secs):
        consecutive differences, to see if a lock violation happened.
     """
     
-    lockname = "oneNarrowBedForManySleepers"
+    lockname = RAMDISK + "oneNarrowBedForManySleepers"
     timestamps = []
     
     Log = getInfoLogger('[thrId=%(thread).5d]') # nice printing with timestamp
@@ -237,6 +240,8 @@ def massiveNumberOfUsers(n, secs):
     print "If all of these are > %f then the DLock has worked fine." % secs
     print diffs
     
+    print "overhead by threading, and locking:", 
+    diffs = [d - secs for d in diffs] 
     theMin, theMax = min(diffs), max(diffs)
     print "min=%.4f max=%.4f" % (theMin, theMax),
     try: import statistics
