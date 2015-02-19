@@ -244,7 +244,9 @@ def massiveNumberOfUsers(n, secs):
     diffs = [d - secs for d in diffs] 
     theMin, theMax = min(diffs), max(diffs)
     print "min=%.4f max=%.4f" % (theMin, theMax),
-    try: import statistics
+    try:
+        # pip install statistics 
+        import statistics
     except: pass
     else:
         mean = statistics.mean(diffs)

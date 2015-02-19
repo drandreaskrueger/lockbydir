@@ -401,14 +401,21 @@ def testDLock():
 def print_Ramdisk_Manual():
     """Measured:
     500 threads waiting for 1 DLock - overhead by threading, print, and locking:
-    Windows with HD: min=0.0063 max=0.0704 median=0.0279 mean=0.0274 stdv=0.0131
-    Linux with SSD:  
-    DLock in RAM:    
-    So: When time critical, put DLock in RAM!
+    
+    Machine 1
+     Windows with HD: min=0.0063 max=0.0704 median=0.0279 mean=0.0274 stdv=0.0131
+     Linux (in VirtualBox):
+        with HD:      min=0.0004 max=0.0475 median=0.0030 mean=0.0045 stdv=0.0047
+        with RAMDISK: min=0.0004 max=0.0422 median=0.0023 mean=0.0038 stdv=0.0042
+    Machine 2 Linux:
+        with SSD:     min=0.0005 max=0.0043 median=0.0008 mean=0.0009 stdv=0.0004
+        with RAMDISK: min=0.0003 max=0.0018 median=0.0007 mean=0.0008 stdv=0.0003
+        
+    So: When time critical, put DLock in RAM! And lower the 'CHECKEVERYXSECONDS'.
     """
 
     print "\nN.B.:"
-    print"""On Linux a (tiny!) ramdisk can reduce the overhead a little bit.
+    print"""A (tiny!) ramdisk reduces the overhead of frequent read/writes. On Linux:
     modprobe rd
     mkfs -q /dev/ram1 100
     mkdir -p /ramcache
