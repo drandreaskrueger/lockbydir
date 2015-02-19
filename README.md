@@ -39,7 +39,8 @@ Users need not care about the lockdir, but access the lock class simply by two f
 
 ### @parameters
 
-Default TIMEOUT, and PATIENCE can be changed in each DLock instance.
+Default TIMEOUT, and PATIENCE can be changed in each DLock instance, or by subclassing DLock.
+
 * TIMEOUT: Seconds after which the lock opens automatically.
 * PATIENCE: Seconds after which no more hope to acquire the lock. 
 

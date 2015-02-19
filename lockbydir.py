@@ -46,10 +46,10 @@ TODO 1: how to make this atomic ?
     if self.timedOut():
        self.breakLock()  
        
-I have never seen it happen (as first step is very fast), but in principle 
-it is not impossible that two processes both arrive at .timedOut() = True
-at the same time; and when one has done '.breakLock()' AND already created 
-a new lock, only then the second one reaches the '.breakLock()'. 
+I have never seen it happen (as the first step is very fast), but it is not 
+impossible that 2 processes both arrive at .timedOut() = True at the same time. 
+And when one has done '.breakLock()' AND later already created a new lock, 
+only then the second one reaches the '.breakLock()'. 
 Very improbable, but not impossible.  Then two could both be locking. 
 
 I have no idea how to solve this. What is the equivalent of a successful mkdir, 
@@ -65,14 +65,21 @@ that they use the same TIMEOUT!  See 'lockbydir_concurrent.FastDLock'
 for an elegant way to guarantee that. (Subclassing DLock)
  
 New idea: Put timeout into lockdir, then each lockdir creator can decide 
-about his own timeout.  Not much overhead because the first who finds 
-a timed out lock, would remove it completely anyway.   Good idea, I guess.
-But not necessary for my purposes. Please fork this if you want to.
+about his own timeout - and all waiting consumers have to obey to that.
+Would really put PATIENCE into the waiting one, and TIMEOUT into the lock.
+
+Considerable overhead because all waiting processes will check often 
+for timeout, so lots of read-access to the disk. Or all waiting loops 
+get a timer each, and only come back to checking for timeout as soon
+as the lock's time is up. Quite a bit of work - perhaps?
+  
+Still, a good idea, I guess. But as all my processes have the same timeout,
+not necessary for my purposes. Fork this GIT if you want to implement it. 
 (Or pay me to code it. See @bitcoin.)
 
 
-And contact me. In any case. Thanks a lot.
-This was a very interesting task! :-) Learnt a lot!
+And please: Contact me. Send a postcard. In any case. Thanks a lot.
+This was a very interesting task! :-) Learnt a lot! Python is great!
 
 See my github For feature requests, ideas, suggestions, appraisal, criticism:
 @issues https://github.com/drandreaskrueger/lockbydir/issues
@@ -387,6 +394,18 @@ def testDLock():
     Log("L.isLocked = %s" % L.isLocked())
 
 
+def print_Ramdisk_Manual():
+    print "\nN.B.:"
+    print"""On Linux a (tiny!) ramdisk for the DLocks will reduce the overhead.
+    modprobe rd
+    mkfs -q /dev/ram1 100
+    mkdir -p /ramcache
+    mount /dev/ram1 /ramcache
+    df -H | grep ramcache"""
+    print "Then you simple use lockname = '/ramcache/lockname'"
+    print
+    
+
 def howToUse(secs = 9):
     """short version how to use DLocks: A, B, C (, D)."""
      
@@ -398,6 +417,8 @@ def howToUse(secs = 9):
     return acquired         # Optional: Tell the caller.
 
 if __name__ == '__main__':
+    # print_Ramdisk_Manual()
+    
     testDLock()
     howToUse(1)
 

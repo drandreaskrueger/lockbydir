@@ -49,9 +49,9 @@ My github For feature requests, ideas, suggestions, appraisal, criticism:
 @wiki   https://github.com/drandreaskrueger/lockbydir/wiki 
 '''
 
-RUN_EXAMPLE = 1  # 1 or 2
+RUN_EXAMPLE = 2  # 1 or 2
 
-from lockbydir import DLock, getInfoLogger, TIMEOUT
+from lockbydir import DLock, getInfoLogger, TIMEOUT, print_Ramdisk_Manual
 
 ######################################################################
 # concurrent example 1
@@ -229,6 +229,8 @@ def massiveNumberOfUsers(n, secs):
     diffs = map ( lambda x: round (x, 4) , diffs) # round all to 0.0001  
     diffs.sort()      # better for reading
     
+    print "Result: %d succeeded in acquiring the lock" % ns  , 
+    print "and %d had not enough patience to wait longer." % (n - ns)
     print
     print "Differences between %d recorded sleep end times, sorted. " % ns
     print "If all of these are > %f then the DLock has worked fine." % secs
@@ -237,11 +239,15 @@ def massiveNumberOfUsers(n, secs):
 def startMassive():
     massiveNumberOfUsers(300, 0.05)
     
+    print_Ramdisk_Manual()
+    
 def startMassive_ForGitPlayer():
     print "\n\nSorry, the PythonAnywhere GITplayer only allows to spawn 20 threads."
     print "Clone the Git to your own computer to see this work with 300 threads:"
     print "https://github.com/drandreaskrueger/lockbydir\n\n"
     massiveNumberOfUsers(18, 0.25)
+    
+    print_Ramdisk_Manual()
 
 if __name__ == '__main__':
 
