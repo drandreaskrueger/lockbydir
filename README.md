@@ -59,13 +59,13 @@ Or you download it, and start all 3 examples like this:
 @note:     Tested on Python 2.7.5. Works on Windows and Linux.
 
 @requires: lockbydir.py, lockbydir_OS.py, lockbydir_concurrent.py
-    
+
+@since:    23 Jan 2015, last change: See commit/file date    
 - - -
 
 ### @human
 
 @contact:  python (at) AndreasKrueger (dot) de   
-@since:    23 Jan 2015
 
 @license:  Never remove my name, nor the examples - and send me job offers.
 
