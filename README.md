@@ -52,8 +52,9 @@ Default TIMEOUT, and PATIENCE can be changed in each DLock instance.
 ### @liveplayer
 You can see the examples running live(!) in a GITplayer, thanks to PythonAnywhere!
 
-* [testDLock() (inner workings)](https://www.pythonanywhere.com/gists/2c7c0c471a335c40c126/gistfile1.txt/python2/)
-* [lockbyfile_concurrent.py (several processes use same lock)](https://www.pythonanywhere.com/gists/8e5c4f11874d8295d0f1/gistfile1.txt/python2/)
+* [testDLock() (inner workings)](https://www.pythonanywhere.com/gists/4b0b06bf9c13d8e5ea76/gistfile1.txt/python2/)
+* [lockbyfile_concurrent.py example 1 (several processes use same lock)](https://www.pythonanywhere.com/gists/6133112519b52eb435c2/gistfile1.txt/python2)
+* [lockbyfile_concurrent.py example 2 (massive hammering)](https://www.pythonanywhere.com/gists/d0209dd72d66efdb2c8f/gistfile1.txt/python2)
 
 Or you download and run it like this:  
 

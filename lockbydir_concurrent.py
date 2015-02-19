@@ -236,6 +236,11 @@ def massiveNumberOfUsers(n, secs):
     
 def startMassive():
     massiveNumberOfUsers(300, 0.05)
+    
+def startMassive_ForGitPlayer():
+    print "\n\nSorry, the PythonAnywhere only allows to spawn 20 threads."
+    print "Clone the Git to your own computer to see this work with 300 threads.\n\n"
+    massiveNumberOfUsers(19, 0.5)
 
 if __name__ == '__main__':
 
