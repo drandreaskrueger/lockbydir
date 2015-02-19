@@ -198,6 +198,7 @@ def tryToGetIntoTheOneBed(lockname, secs, timestamps, Log ):
     else:
         Log("NO, me not.")
         
+
 def massiveNumberOfUsers(n, secs):
     """n consumers competing for 1 resource,
        to use it for 'secs' seconds, then store the end time.
@@ -235,6 +236,18 @@ def massiveNumberOfUsers(n, secs):
     print "Differences between %d recorded sleep end times, sorted. " % ns
     print "If all of these are > %f then the DLock has worked fine." % secs
     print diffs
+    
+    theMin, theMax = min(diffs), max(diffs)
+    print "min=%.4f max=%.4f" % (theMin, theMax),
+    try: import statistics
+    except: pass
+    else:
+        mean = statistics.mean(diffs)
+        median = statistics.median(diffs)
+        stdev = statistics.mean(diffs)
+        print "median=%.4f mean=%.4f stdv=%.4f" % (median, mean, stdev),
+    print
+        
     
 def startMassive():
     massiveNumberOfUsers(300, 0.05)
