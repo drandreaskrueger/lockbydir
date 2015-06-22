@@ -61,7 +61,11 @@ Or you download it, and start all 3 examples like this:
 @requires: lockbydir.py, lockbydir_OS.py, lockbydir_concurrent.py
 
 @since:    23 Jan 2015, last change: See commit/file date    
+
 - - -
+### @related:
+http://stackoverflow.com/a/21444311/3693375 and http://stackoverflow.com/a/28532580/3693375 and probably http://stackoverflow.com/q/1348026/3693375
+
 
 ### @human
 
